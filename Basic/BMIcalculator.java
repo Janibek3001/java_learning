@@ -4,24 +4,29 @@ import java.util.Scanner;
 public class BMIcalculator{
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
-        System.out.print("Enter your weight(kilogramm): ");
-        int weight = in.nextInt();
-        System.out.print("Enter your height(in metres): ");
+        Calculate(in);
+        in.close();
+    }
+    static void Calculate(Scanner in){
+        System.out.print("Enter your height in meters: ");
         double height = in.nextDouble();
-        
-        double calculate = (double)weight/Math.pow(height, 2);
-        System.out.printf("Your BMI: %.2f\n", calculate);
+        System.out.print("Enter your weight in kilogramms: ");
+        double weight = in.nextDouble();
 
-        if (calculate < 18.5) {
-            System.out.println("Underweight");
-        } else if (calculate > 18.5 && calculate < 24.9){
-            System.out.println("Normal Weight");
-        } else if (calculate > 25.0 && calculate < 29.9) {
-            System.out.println("Overweight");
+        double result = weight / Math.pow(height, 2);
+        System.out.println(result);
+        validator(result);
+    }
+
+    static void validator(double r){
+        if (r < 18.5) {
+            System.out.println("Light weight");
+        } else if (r > 18.5 && r < 24.5){
+            System.out.println("Normal weight");
+        } else if (r > 24.6 && r < 30){
+            System.out.println("Extra weight");
         } else {
             System.out.println("Obese");
         }
-
-        in.close();
     }
 }
