@@ -1,43 +1,34 @@
-
 import java.util.Scanner;
 
 public class BasicCalculator {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         System.out.println("Enter two numbers: ");
-        double x = in.nextInt();
-        double y = in.nextInt();
-        System.out.println("Choose what operand you want to do: (+, -, *, /)");
-        char operand = in.next().charAt(0);
-        boolean valid = true;
+        double x = in.nextDouble();
+        double y = in.nextDouble();
+        System.out.println("Choose the operand (+, -, *, /): ");
+        char choice = in.next().charAt(0);
         double result = 0;
-        switch(operand) {
-            case '+':
-            result = x + y;
-            break;
-            case '-':
-            result = x - y;
-            break;
-            case '*':
-            result = x * y;
-            break;
-            case '/':
-            if (y == 0) {
-                System.out.println("Error");
-                valid = false;
+        boolean valid = true;
+
+        switch(choice){
+            case '+': result = x + y; break;
+            case '-': result = x - y; break;
+            case '*': result = x * y; break;
+            case '/': 
+            if (y != 0) { 
+                result = x / y;
             } else {
-                result = x / y; 
+                System.out.println("Divided by 0 is not acceptable!");
+                valid = false;
             }
             break;
             default:
-            System.out.println("Operation not found!!");
-            valid = false;
+            System.out.println("Invalid operator");
         }
-        if (valid){
-            System.out.printf("The result is : %.2f\n", result);
+        if (valid) {
+            System.out.printf("the result: %.2f\n", result);
         }
-
         in.close();
     }
-    
 }
