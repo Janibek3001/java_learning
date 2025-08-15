@@ -53,6 +53,7 @@ public class BubbleSort { //Creating the method to do the Bubble sort
 
         System.out.println("The array after the sort");
         Sort(numbers, size);
+        printarray(numbers, size);
 
     }
 }
